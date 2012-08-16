@@ -54,5 +54,21 @@ namespace GitHubSharp
             var response = client.Execute<Rate>(request);
         }
 
+        public List<Repo> Repos
+        {
+            get
+            {
+                var request = new RestRequest
+                {
+                    Resource = "/user/repos",
+                    Method = Method.GET
+                };
+
+                var response = client.Execute<List<Repo>>(request);
+
+                return response.Data;
+            }
+        }
+
     }
 }

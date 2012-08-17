@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using RestSharp;
 using GitHubSharp.JSON;
+using GitHubSharp.Auth;
 
 namespace GitHubSharp
 {
-    public class GitHub
+    public partial class GitHub
     {
         private const string apiRepo = "https://api.github.com";
 
@@ -26,7 +27,13 @@ namespace GitHubSharp
         public GitHub(string username, string password) :
             this()
         {
-            client.Authenticator = new HttpBasicAuthenticator(username, password);
+            client.Authenticator = new Authenticator(username, password, false);
+        }
+
+        public GitHub(string secrestPath) :
+            this()
+        {
+            client.Authenticator = new Authenticator(secrestPath, false);
         }
 
         public Rate Limit
@@ -53,22 +60,5 @@ namespace GitHubSharp
             request.AddParameter("note_url", url);
             var response = client.Execute<Rate>(request);
         }
-
-        public List<Repo> Repos
-        {
-            get
-            {
-                var request = new RestRequest
-                {
-                    Resource = "/user/repos",
-                    Method = Method.GET
-                };
-
-                var response = client.Execute<List<Repo>>(request);
-
-                return response.Data;
-            }
-        }
-
     }
 }

@@ -61,6 +61,22 @@ namespace ConsoleClient
             Console.Out.WriteLine("\n\nRepository {0}:\n{1}", orgRepos[0].Name, orgRepos[0].Dump());
 
             Console.ReadKey();
+
+            List<Gist> gists = github.MyGists;
+            Console.Out.WriteLine("{0} Gists:", gists.Count);
+
+            foreach (Gist gist in gists)
+            {
+                Console.Out.Write("{0},", gist.Description);
+            }
+
+            Console.Out.WriteLine("\n\nGist {0}:\n{1}", gists[0].Description, gists[0].Dump());
+
+            Console.ReadKey();
+
+            Console.Out.WriteLine("\n\nGist GET {0}:\n{1}", gists[0].Description, github.GetGist(gists[0].Id).Dump());
+
+            Console.ReadKey();
         }
     }
 }

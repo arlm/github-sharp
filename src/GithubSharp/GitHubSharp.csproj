@@ -52,10 +52,13 @@
     <Compile Include="Auth\Authenticator.cs" />
     <Compile Include="Auth\SecretsHandler.cs" />
     <Compile Include="Github.cs" />
+    <Compile Include="Github.Gist.cs" />
     <Compile Include="Github.Organization.cs" />
     <Compile Include="Github.Repository.cs" />
+    <Compile Include="JSON\Gist.cs" />
     <Compile Include="JSON\Organization.cs" />
-    <Compile Include="JSON\Owner.cs" />
+    <Compile Include="JSON\File.cs" />
+    <Compile Include="JSON\User.cs" />
     <Compile Include="JSON\Permissions.cs" />
     <Compile Include="JSON\Plan.cs" />
     <Compile Include="JSON\Rate.cs" />

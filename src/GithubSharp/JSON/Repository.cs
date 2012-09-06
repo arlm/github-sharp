@@ -12,7 +12,7 @@ namespace GitHubSharp.JSON
         public string Created_at { get; set; }
         public string Description { get; set; }
         public string Ssh_url { get; set; }
-        public Owner Owner { get; set; }
+        public User Owner { get; set; }
         public bool Has_downloads { get; set; }
         public string Updated_at { get; set; }
         public int Forks_count { get; set; }

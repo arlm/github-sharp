@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GitHubSharp.JSON
 {
-    public class Owner
+    public class User
     {
         public string Login { get; set; }
         public int Id { get; set; }

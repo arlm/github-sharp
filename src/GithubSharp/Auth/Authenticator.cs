@@ -15,17 +15,17 @@ namespace GitHubSharp.Auth
 
         public Authenticator(string username, string password, bool useApiKey)
         {
-            username = this.username;
-            password = this.password;
-            useApiKey = this.useApiKey;
+            this.username = username;
+            this.password = password;
+            this.useApiKey = useApiKey;
         }
 
         public Authenticator(string secretsFile, bool useApiKey)
         {
-            secrets = new SecretsHandler(secretsFile);
-            username = secrets.Username;
-            password = secrets.Password;
-            useApiKey = this.useApiKey;
+            this.secrets = new SecretsHandler(secretsFile);
+            this.username = secrets.Username;
+            this.password = secrets.Password;
+            this.useApiKey = useApiKey;
         }
 
         public void Authenticate(IRestRequest request)

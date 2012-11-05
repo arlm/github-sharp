@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GitHubSharp.JSON;
 using RestSharp;
+using System.Net;
 
 namespace GitHubSharp
 {
@@ -65,6 +66,32 @@ namespace GitHubSharp
             var response = client.Execute<List<Repository>>(request);
 
             return response.Data;
+        }
+
+        public byte[] DownloadZipball(string owner, string repo, string branch) {
+            RestClient _client = new RestClient
+            {
+                BaseUrl = "https://github.com",
+                Authenticator = client.Authenticator,
+            };
+            var request = new RestRequest
+            {
+                Resource = "/{owner}/{repo}/zipball/{branch}",
+                Method = Method.GET                
+            };
+
+            request.AddUrlSegment("owner", owner);
+            request.AddUrlSegment("repo", repo);
+            request.AddUrlSegment("branch", branch);
+
+            var response =_client.Execute(request);
+            if (response.ContentLength != -1)
+            {
+                return response.RawBytes;
+            }
+            else {
+                return null;
+            }
         }
     }
 }

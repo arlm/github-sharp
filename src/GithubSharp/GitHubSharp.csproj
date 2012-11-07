@@ -68,6 +68,8 @@
     <Compile Include="JSON\Download.cs" />
     <Compile Include="Github.Downloads.cs" />
     <Compile Include="Github.Commits.cs" />
+    <Compile Include="Github.Issues.cs" />
+    <Compile Include="JSON\Issue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
